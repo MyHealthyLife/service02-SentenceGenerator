@@ -1,6 +1,6 @@
 package myhealthylife.sentencegenerator.model;
 
-import myhealthylife.sentencegenerator.dao.LifeCoachDao;
+import myhealthylife.sentencegenerator.dao.SentenceGeneratorDao;
 
 import java.io.Serializable;
 
@@ -74,51 +74,51 @@ public class Sentence implements Serializable {
 	
 	/* DATABASE OPERATIONS */
 	public static Sentence getSentenceById(long sentenceId) {
-		EntityManager em = LifeCoachDao.instance.createEntityManager();
+		EntityManager em = SentenceGeneratorDao.instance.createEntityManager();
 		Sentence p = em.find(Sentence.class, sentenceId);
-		LifeCoachDao.instance.closeConnections(em);
+		SentenceGeneratorDao.instance.closeConnections(em);
 		return p;
 	}
 	
 	public static List<Sentence> getAll() {
 
 		System.out.println("--> Initializing Entity manager...");
-		EntityManager em = LifeCoachDao.instance.createEntityManager();
+		EntityManager em = SentenceGeneratorDao.instance.createEntityManager();
 		System.out.println("--> Querying the database for all the people...");
 	    List<Sentence> list = em.createNamedQuery("Sentence.findAll", Sentence.class).getResultList();
 		System.out.println("--> Closing connections of entity manager...");
-	    LifeCoachDao.instance.closeConnections(em);
+	    SentenceGeneratorDao.instance.closeConnections(em);
 	    return list;
 	}
 	
 	public static Sentence saveSentence(Sentence p) {
-		EntityManager em = LifeCoachDao.instance.createEntityManager();
+		EntityManager em = SentenceGeneratorDao.instance.createEntityManager();
 		EntityTransaction tx = em.getTransaction();
 		tx.begin();
 		em.persist(p);
 		tx.commit();
-	    LifeCoachDao.instance.closeConnections(em);
+	    SentenceGeneratorDao.instance.closeConnections(em);
 	    return p;
 	}
 	
 	public static Sentence updateSentence(Sentence p) {
-		EntityManager em = LifeCoachDao.instance.createEntityManager();
+		EntityManager em = SentenceGeneratorDao.instance.createEntityManager();
 		EntityTransaction tx = em.getTransaction();
 		tx.begin();
 		p=em.merge(p);
 		tx.commit();
-	    LifeCoachDao.instance.closeConnections(em);
+	    SentenceGeneratorDao.instance.closeConnections(em);
 	    return p;
 	}
 	
 	public static void removeSentence(Sentence p) {
-		EntityManager em = LifeCoachDao.instance.createEntityManager();
+		EntityManager em = SentenceGeneratorDao.instance.createEntityManager();
 		EntityTransaction tx = em.getTransaction();
 		tx.begin();
 	    p=em.merge(p);
 	    em.remove(p);
 	    tx.commit();
-	    LifeCoachDao.instance.closeConnections(em);
+	    SentenceGeneratorDao.instance.closeConnections(em);
 	}
 
 

@@ -9,11 +9,11 @@ import javax.persistence.Persistence;
 
 import myhealthylife.sentencegenerator.model.Sentence;
 
-public enum LifeCoachDao {
+public enum SentenceGeneratorDao {
 	instance;
 	private EntityManagerFactory emf;
 	
-	private LifeCoachDao() {
+	private SentenceGeneratorDao() {
 		if (emf!=null) {
 			emf.close();
 		}
