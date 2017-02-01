@@ -71,6 +71,28 @@ public class SentencesImpl implements Sentences {
 		
 	}
 
+	@Override
+	public Sentence updateSentence(Sentence sentenceToUpdate) {
+		
+		// Gets the id of the sentence to update
+    	Long sentenceId = sentenceToUpdate.getIdSentence();
+    	
+    	// Updates the data of the sentence
+    	Sentence currentPerson = Sentence.getSentenceById(sentenceToUpdate.getIdSentence());
+    	
+    	if(sentenceToUpdate.getCode()!=null) {
+    		currentPerson.setCode(sentenceToUpdate.getCode());
+    	}
+    	if(sentenceToUpdate.getText()!=null) {
+    		currentPerson.setText(sentenceToUpdate.getText());
+    	}
+    	
+    	// Update query
+        Sentence.updateSentence(currentPerson);
+        return Sentence.getSentenceById(sentenceId);
+		
+	}
+
 
 
 

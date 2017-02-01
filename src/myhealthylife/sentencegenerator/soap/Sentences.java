@@ -29,12 +29,16 @@ public interface Sentences {
     
     @WebMethod(operationName="createSentence")
     @WebResult(name="sentence") 
-    public Sentence createSentence(@WebParam(name="sentence") Sentence person);
+    public Sentence createSentence(@WebParam(name="sentence") Sentence sentenceToSave);
     
 
     @WebMethod(operationName="deleteSentence")
-    @WebResult(name="sentenceId") 
+    @WebResult(name="idSentence") 
     public long deleteSentence(@WebParam(name="sentenceId") long id);
+    
+    @WebMethod(operationName="updateSentence")
+    @WebResult(name="sentence") 
+    public Sentence updateSentence(@WebParam(name="sentence") Sentence sentenceToUpdate);
     
 
 }
