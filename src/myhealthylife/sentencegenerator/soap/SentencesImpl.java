@@ -39,6 +39,19 @@ public class SentencesImpl implements Sentences {
 		
 	}
 
+	@Override
+	public Sentence createSentence(Sentence sentenceToSave) {
+    	
+    	// Saves the new sentence
+    	Sentence.saveSentence(sentenceToSave);
+
+    	// Gets the sentence just inserted
+    	sentenceToSave = Sentence.getSentenceById(sentenceToSave.getIdSentence());
+    	
+    	return sentenceToSave;
+
+	}
+
 
 
 

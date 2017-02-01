@@ -27,12 +27,12 @@ public interface Sentences {
     @WebResult(name="sentence") 
     public Sentence readSentence(@WebParam(name="sentenceId") long id);
     
-    /*@WebMethod(operationName="createSentence")
+    @WebMethod(operationName="createSentence")
     @WebResult(name="sentence") 
     public Sentence createSentence(@WebParam(name="sentence") Sentence person);
     
 
-    @WebMethod(operationName="deleteSentence")
+    /*@WebMethod(operationName="deleteSentence")
     @WebResult(name="sentenceId") 
     public long deleteSentence(@WebParam(name="sentenceId") long id);*/
     
