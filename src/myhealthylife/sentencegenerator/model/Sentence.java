@@ -31,7 +31,7 @@ public class Sentence implements Serializable {
 	private long idSentence;
 
 	@Column(name="code")
-	private String code;
+	private Integer code;
 	
 	@Column(name="text")
 	private String text;
@@ -52,12 +52,12 @@ public class Sentence implements Serializable {
 	}
 
 
-	public String getCode() {
+	public Integer getCode() {
 		return code;
 	}
 
 
-	public void setCode(String code) {
+	public void setCode(Integer code) {
 		this.code = code;
 	}
 

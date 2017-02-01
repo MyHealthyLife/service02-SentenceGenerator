@@ -78,17 +78,17 @@ public class SentencesImpl implements Sentences {
     	Long sentenceId = sentenceToUpdate.getIdSentence();
     	
     	// Updates the data of the sentence
-    	Sentence currentPerson = Sentence.getSentenceById(sentenceToUpdate.getIdSentence());
+    	Sentence currentSentence = Sentence.getSentenceById(sentenceToUpdate.getIdSentence());
     	
     	if(sentenceToUpdate.getCode()!=null) {
-    		currentPerson.setCode(sentenceToUpdate.getCode());
+    		currentSentence.setCode(sentenceToUpdate.getCode());
     	}
     	if(sentenceToUpdate.getText()!=null) {
-    		currentPerson.setText(sentenceToUpdate.getText());
+    		currentSentence.setText(sentenceToUpdate.getText());
     	}
     	
     	// Update query
-        Sentence.updateSentence(currentPerson);
+        Sentence.updateSentence(currentSentence);
         return Sentence.getSentenceById(sentenceId);
 		
 	}
