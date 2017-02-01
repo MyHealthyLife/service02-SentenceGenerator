@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.Date;
 import java.util.Iterator;
 import java.util.List;
+import java.util.Random;
 
 import javax.jws.WebParam;
 import javax.jws.WebService;
@@ -90,6 +91,36 @@ public class SentencesImpl implements Sentences {
     	// Update query
         Sentence.updateSentence(currentSentence);
         return Sentence.getSentenceById(sentenceId);
+		
+	}
+
+	@Override
+	public Sentence readRandomSentenceSentence() {
+		
+		List<Sentence> sentenceList = this.readSentenceList().getSentence();
+		
+		if(!sentenceList.isEmpty()) {
+			
+			Sentence selectedSentence = sentenceList.get((int)this.getRandomLong(sentenceList.size()-1));
+				
+			return selectedSentence;
+			
+		}
+		
+		return null;
+		
+	}
+	
+	
+
+	private long getRandomLong(long upperRange) {
+		
+		Random randomGenerator;
+		randomGenerator = new Random();
+		
+		long lowerRange = 0;
+		
+		return lowerRange + (long)(randomGenerator.nextDouble()*(upperRange - lowerRange));
 		
 	}
 

@@ -40,5 +40,9 @@ public interface Sentences {
     @WebResult(name="sentence") 
     public Sentence updateSentence(@WebParam(name="sentence") Sentence sentenceToUpdate);
     
+    @WebMethod(operationName="readRandomSentence")
+    @WebResult(name="sentence") 
+    public Sentence readRandomSentenceSentence();
+    
 
 }
