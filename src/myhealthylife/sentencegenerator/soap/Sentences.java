@@ -32,9 +32,9 @@ public interface Sentences {
     public Sentence createSentence(@WebParam(name="sentence") Sentence person);
     
 
-    /*@WebMethod(operationName="deleteSentence")
+    @WebMethod(operationName="deleteSentence")
     @WebResult(name="sentenceId") 
-    public long deleteSentence(@WebParam(name="sentenceId") long id);*/
+    public long deleteSentence(@WebParam(name="sentenceId") long id);
     
 
 }

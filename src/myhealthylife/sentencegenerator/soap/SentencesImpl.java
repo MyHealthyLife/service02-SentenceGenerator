@@ -52,6 +52,25 @@ public class SentencesImpl implements Sentences {
 
 	}
 
+	@Override
+	public long deleteSentence(long id) {
+		
+
+		Sentence p = Sentence.getSentenceById(id);
+        
+        // If the sentence exists then it removes it
+        if (p!=null) {
+            Sentence.removeSentence(p);
+            return p.getIdSentence();
+        }
+        
+        // Otherwise it returns an error code
+        else {
+            return -1;
+        }
+		
+	}
+
 
 
 
