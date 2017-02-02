@@ -22,7 +22,7 @@ import java.util.List;
 @Table(name="Sentence")
 @NamedQuery(name="Sentence.findAll", query="SELECT s FROM Sentence s")
 @XmlRootElement(name="sentence")
-@XmlType(propOrder={"idSentence", "type", "text", "sentenceType"})
+@XmlType(propOrder={"idSentence", "text", "sentenceType"})
 public class Sentence implements Serializable {
 	private static final long serialVersionUID = 1L;
 

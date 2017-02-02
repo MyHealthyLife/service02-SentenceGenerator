@@ -112,20 +112,23 @@ public class SentencesImpl implements Sentences {
 	
 	
 	@Override
-	public Sentence readRandomSentenceByType(long sentenceType) {
+	public Sentence readRandomSentenceByType(String sentenceType) {
 		
+		// Lists used to filter results
 		List<Sentence> sentenceList = this.readSentenceList().getSentence();
 		List<Sentence> sentenceListFiltered = new ArrayList<>();
 		
 		for(int i=0;i<sentenceList.size();i++) {
 			
+			// Gets the current sentence and its type
 			Sentence currentSentence = sentenceList.get(i);
+			SentenceType currentType = currentSentence.getSentenceType();
 			
-			/*if(currentSentence.getType()!=null && currentSentence.getType()==sentenceType) {
+			if(currentType!=null && currentType.getDescription().equals(sentenceType)) {
 				
 				sentenceListFiltered.add(currentSentence);
 				
-			}*/
+			}
 			
 			
 		}
