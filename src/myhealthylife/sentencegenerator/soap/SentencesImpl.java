@@ -181,10 +181,10 @@ public class SentencesImpl implements Sentences {
 		sTypeToSave.setDescription(typeName);
 
 		// Saves the new type
-    	SentenceType.saveSentence(sTypeToSave);
+    	SentenceType.saveSentenceType(sTypeToSave);
 
     	// Gets the type just inserted and returns it
-    	sTypeToSave = SentenceType.getSentenceById(sTypeToSave.getIdSentenceType());
+    	sTypeToSave = SentenceType.getSentenceTypeById(sTypeToSave.getIdSentenceType());
     	
     	return sTypeToSave;
 
@@ -193,18 +193,24 @@ public class SentencesImpl implements Sentences {
 	
 	
 	@Override
-	public Sentence setSentenceType(long id, String typeName) {
+	public Sentence setSentenceType(long sentenceId, long typeId) {
 		
+		// Gets the sentence to update from the database
+		Sentence sentenceToUpdate = Sentence.getSentenceById(sentenceId);
+		
+		// Gets the requested sentence type from the database
+		SentenceType sType = SentenceType.getSentenceTypeById(typeId);
+		
+		if(sentenceToUpdate!=null && sType!=null) {
+			
+			// Updates the sentence type
+			sentenceToUpdate.setSentenceType(sType);
+			Sentence.updateSentence(sentenceToUpdate);
 
-		Sentence sentenceToUpdate = Sentence.getSentenceById(id);
+			return Sentence.getSentenceById(sentenceId);
+		}
 		
-		SentenceType sType = SentenceType.getSentenceById(1);
-		
-		sentenceToUpdate.setSentenceType(sType);
-		
-		Sentence.updateSentence(sentenceToUpdate);
-		
-		return Sentence.getSentenceById(id);
+		return null;
 	}
 
 	

@@ -59,7 +59,7 @@ public interface Sentences {
     
     @WebMethod(operationName="setSentenceType")
     @WebResult(name="sentence") 
-    public Sentence setSentenceType(@WebParam(name="sentenceId") long id, @WebParam(name="typeName") String typeName);
+    public Sentence setSentenceType(@WebParam(name="sentenceId") long sentenceId, @WebParam(name="typeId") long typeId);
     
 
 }

@@ -56,7 +56,7 @@ public class SentenceType implements Serializable {
 	
 	
 	/* DATABASE OPERATIONS */
-	public static SentenceType getSentenceById(long sentenceId) {
+	public static SentenceType getSentenceTypeById(long sentenceId) {
 		EntityManager em = SentenceGeneratorDao.instance.createEntityManager();
 		SentenceType p = em.find(SentenceType.class, sentenceId);
 		SentenceGeneratorDao.instance.closeConnections(em);
@@ -74,7 +74,7 @@ public class SentenceType implements Serializable {
 	    return list;
 	}
 	
-	public static SentenceType saveSentence(SentenceType p) {
+	public static SentenceType saveSentenceType(SentenceType p) {
 		EntityManager em = SentenceGeneratorDao.instance.createEntityManager();
 		EntityTransaction tx = em.getTransaction();
 		tx.begin();
@@ -84,7 +84,7 @@ public class SentenceType implements Serializable {
 	    return p;
 	}
 	
-	public static SentenceType updateSentence(SentenceType p) {
+	public static SentenceType updateSentenceType(SentenceType p) {
 		EntityManager em = SentenceGeneratorDao.instance.createEntityManager();
 		EntityTransaction tx = em.getTransaction();
 		tx.begin();
@@ -94,7 +94,7 @@ public class SentenceType implements Serializable {
 	    return p;
 	}
 	
-	public static void removeSentence(SentenceType p) {
+	public static void removeSentenceType(SentenceType p) {
 		EntityManager em = SentenceGeneratorDao.instance.createEntityManager();
 		EntityTransaction tx = em.getTransaction();
 		tx.begin();
