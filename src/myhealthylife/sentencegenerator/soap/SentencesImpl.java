@@ -81,8 +81,8 @@ public class SentencesImpl implements Sentences {
     	// Updates the data of the sentence
     	Sentence currentSentence = Sentence.getSentenceById(sentenceToUpdate.getIdSentence());
     	
-    	if(sentenceToUpdate.getCode()!=null) {
-    		currentSentence.setCode(sentenceToUpdate.getCode());
+    	if(sentenceToUpdate.getType()!=null) {
+    		currentSentence.setType(sentenceToUpdate.getType());
     	}
     	if(sentenceToUpdate.getText()!=null) {
     		currentSentence.setText(sentenceToUpdate.getText());

@@ -22,7 +22,7 @@ import java.util.List;
 @Table(name="Sentence")
 @NamedQuery(name="Sentence.findAll", query="SELECT s FROM Sentence s")
 @XmlRootElement(name="sentence")
-@XmlType(propOrder={"idSentence", "code", "text"})
+@XmlType(propOrder={"idSentence", "type", "text"})
 public class Sentence implements Serializable {
 	private static final long serialVersionUID = 1L;
 
@@ -30,8 +30,8 @@ public class Sentence implements Serializable {
 	@GeneratedValue
 	private long idSentence;
 
-	@Column(name="code")
-	private Integer code;
+	@Column(name="type")
+	private Integer type;
 	
 	@Column(name="text")
 	private String text;
@@ -52,15 +52,15 @@ public class Sentence implements Serializable {
 	}
 
 
-	public Integer getCode() {
-		return code;
+	public Integer getType() {
+		return type;
 	}
 
 
-	public void setCode(Integer code) {
-		this.code = code;
+	public void setType(Integer type) {
+		this.type = type;
 	}
-
+	
 
 	public String getText() {
 		return text;
