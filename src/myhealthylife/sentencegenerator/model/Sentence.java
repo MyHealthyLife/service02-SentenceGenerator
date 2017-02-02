@@ -29,9 +29,6 @@ public class Sentence implements Serializable {
 	@Id
 	@GeneratedValue
 	private long idSentence;
-
-	@Column(name="type")
-	private Integer type;
 	
 	@Column(name="text")
 	private String text;
@@ -54,16 +51,6 @@ public class Sentence implements Serializable {
 		this.idSentence = idSentence;
 	}
 
-
-	public Integer getType() {
-		return type;
-	}
-
-
-	public void setType(Integer type) {
-		this.type = type;
-	}
-	
 
 	public String getText() {
 		return text;

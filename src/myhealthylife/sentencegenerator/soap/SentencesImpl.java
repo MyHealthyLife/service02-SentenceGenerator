@@ -83,9 +83,6 @@ public class SentencesImpl implements Sentences {
     	// Updates the data of the sentence
     	Sentence currentSentence = Sentence.getSentenceById(sentenceToUpdate.getIdSentence());
     	
-    	if(sentenceToUpdate.getType()!=null) {
-    		currentSentence.setType(sentenceToUpdate.getType());
-    	}
     	if(sentenceToUpdate.getText()!=null) {
     		currentSentence.setText(sentenceToUpdate.getText());
     	}
@@ -124,11 +121,11 @@ public class SentencesImpl implements Sentences {
 			
 			Sentence currentSentence = sentenceList.get(i);
 			
-			if(currentSentence.getType()!=null && currentSentence.getType()==sentenceType) {
+			/*if(currentSentence.getType()!=null && currentSentence.getType()==sentenceType) {
 				
 				sentenceListFiltered.add(currentSentence);
 				
-			}
+			}*/
 			
 			
 		}
