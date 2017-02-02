@@ -70,5 +70,10 @@ public interface Sentences {
     @WebResult(name="sentence") 
     public Sentence setSentenceType(@WebParam(name="sentenceId") long sentenceId, @WebParam(name="typeId") long typeId);
     
+    /* Deletes a type already present in the database */
+    @WebMethod(operationName="deleteSentenceType")
+    @WebResult(name="idSentenceType") 
+    public long deleteSentenceType(@WebParam(name="typeId") long id);
+    
 
 }

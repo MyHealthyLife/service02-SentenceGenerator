@@ -218,6 +218,28 @@ public class SentencesImpl implements Sentences {
 		
 		return null;
 	}
+	
+	
+	
+	
+	@Override
+	public long deleteSentenceType(long id) {
+		
+
+		SentenceType sType = SentenceType.getSentenceTypeById(id);
+        
+        // If the type exists then it removes it
+        if (sType!=null) {
+            SentenceType.removeSentenceType(sType);
+            return sType.getIdSentenceType();
+        }
+        
+        // Otherwise it returns an error code
+        else {
+            return -1;
+        }
+		
+	}
 
 	
 
