@@ -95,13 +95,46 @@ public class SentencesImpl implements Sentences {
 	}
 
 	@Override
-	public Sentence readRandomSentenceSentence() {
+	public Sentence readRandomSentence() {
 		
 		List<Sentence> sentenceList = this.readSentenceList().getSentence();
 		
 		if(!sentenceList.isEmpty()) {
 			
 			Sentence selectedSentence = sentenceList.get((int)this.getRandomLong(sentenceList.size()-1));
+				
+			return selectedSentence;
+			
+		}
+		
+		return null;
+		
+	}
+	
+	
+	@Override
+	public Sentence readRandomSentenceByType(long sentenceType) {
+		
+		List<Sentence> sentenceList = this.readSentenceList().getSentence();
+		List<Sentence> sentenceListFiltered = new ArrayList<>();
+		
+		for(int i=0;i<sentenceList.size();i++) {
+			
+			Sentence currentSentence = sentenceList.get(i);
+			
+			if(currentSentence.getType()!=null && currentSentence.getType()==sentenceType) {
+				
+				sentenceListFiltered.add(currentSentence);
+				
+			}
+			
+			
+		}
+		
+		
+		if(!sentenceListFiltered.isEmpty()) {
+			
+			Sentence selectedSentence = sentenceListFiltered.get((int)this.getRandomLong(sentenceListFiltered.size()-1));
 				
 			return selectedSentence;
 			
