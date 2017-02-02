@@ -96,12 +96,14 @@ public class SentencesImpl implements Sentences {
 	@Override
 	public Sentence readRandomSentence() {
 		
+		// Gets all the sentences present in the database
 		List<Sentence> sentenceList = this.readSentenceList().getSentence();
 		
 		if(!sentenceList.isEmpty()) {
 			
+			// Gets a random sentence by calculating a random index
 			Sentence selectedSentence = sentenceList.get((int)this.getRandomLong(sentenceList.size()-1));
-				
+			
 			return selectedSentence;
 			
 		}
@@ -152,11 +154,13 @@ public class SentencesImpl implements Sentences {
 
 	private long getRandomLong(long upperRange) {
 		
+		// Initializes a new generator
 		Random randomGenerator;
 		randomGenerator = new Random();
 		
 		long lowerRange = 0;
 		
+		// Returns the random long number
 		return lowerRange + (long)(randomGenerator.nextDouble()*(upperRange - lowerRange));
 		
 	}
@@ -205,7 +209,7 @@ public class SentencesImpl implements Sentences {
 		
 		if(sentenceToUpdate!=null && sType!=null) {
 			
-			// Updates the sentence type
+			// Updates the sentence type and then returns it to the client
 			sentenceToUpdate.setSentenceType(sType);
 			Sentence.updateSentence(sentenceToUpdate);
 
