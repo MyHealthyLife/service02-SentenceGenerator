@@ -11,6 +11,7 @@ import javax.jws.WebService;
 
 import myhealthylife.sentencegenerator.model.Sentence;
 import myhealthylife.sentencegenerator.model.SentenceList;
+import myhealthylife.sentencegenerator.model.SentenceType;
 
 //Service Implementation
 
@@ -155,6 +156,21 @@ public class SentencesImpl implements Sentences {
 		
 		return lowerRange + (long)(randomGenerator.nextDouble()*(upperRange - lowerRange));
 		
+	}
+
+	@Override
+	public Sentence setSentenceType(long id, String typeName) {
+		
+
+		Sentence sentenceToUpdate = Sentence.getSentenceById(id);
+		
+		SentenceType sType = SentenceType.getSentenceById(1);
+		
+		sentenceToUpdate.setSentenceType(sType);
+		
+		Sentence.updateSentence(sentenceToUpdate);
+		
+		return Sentence.getSentenceById(id);
 	}
 
 

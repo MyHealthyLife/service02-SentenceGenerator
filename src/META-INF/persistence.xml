@@ -4,6 +4,7 @@
 	
         <provider>org.eclipse.persistence.jpa.PersistenceProvider</provider>
 		<class>myhealthylife.sentencegenerator.model.Sentence</class>
+		<class>myhealthylife.sentencegenerator.model.SentenceType</class>
 	
 	<properties>
             <!-- connecting to an postgress database-->

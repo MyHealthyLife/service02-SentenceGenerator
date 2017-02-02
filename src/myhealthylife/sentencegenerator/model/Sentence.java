@@ -22,7 +22,7 @@ import java.util.List;
 @Table(name="Sentence")
 @NamedQuery(name="Sentence.findAll", query="SELECT s FROM Sentence s")
 @XmlRootElement(name="sentence")
-@XmlType(propOrder={"idSentence", "type", "text"})
+@XmlType(propOrder={"idSentence", "type", "text", "sentenceType"})
 public class Sentence implements Serializable {
 	private static final long serialVersionUID = 1L;
 
@@ -36,6 +36,9 @@ public class Sentence implements Serializable {
 	@Column(name="text")
 	private String text;
 	
+	@ManyToOne(cascade=CascadeType.ALL,fetch=FetchType.EAGER)
+	@JoinColumn(name="idSentenceType",referencedColumnName="idSentenceType",insertable=true,updatable=true)
+	private SentenceType sentenceType;
 	
 	public Sentence() {
 	}
@@ -119,6 +122,16 @@ public class Sentence implements Serializable {
 	    em.remove(p);
 	    tx.commit();
 	    SentenceGeneratorDao.instance.closeConnections(em);
+	}
+
+
+	public SentenceType getSentenceType() {
+		return sentenceType;
+	}
+
+
+	public void setSentenceType(SentenceType sentenceType) {
+		this.sentenceType = sentenceType;
 	}
 
 

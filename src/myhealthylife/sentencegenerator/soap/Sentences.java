@@ -48,5 +48,9 @@ public interface Sentences {
     @WebResult(name="sentence") 
     public Sentence readRandomSentenceByType(@WebParam(name="sentenceType") long sentenceType);
     
+    @WebMethod(operationName="setSentenceType")
+    @WebResult(name="sentence") 
+    public Sentence setSentenceType(@WebParam(name="sentenceId") long id, @WebParam(name="typeName") String typeName);
+    
 
 }
