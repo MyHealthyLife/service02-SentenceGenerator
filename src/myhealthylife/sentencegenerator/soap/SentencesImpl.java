@@ -158,6 +158,26 @@ public class SentencesImpl implements Sentences {
 		
 	}
 
+	
+	@Override
+	public SentenceType createSentenceType(String typeName) {
+		
+		// Creates a new type
+		SentenceType sTypeToSave = new SentenceType();
+		sTypeToSave.setDescription(typeName);
+
+		// Saves the new type
+    	SentenceType.saveSentence(sTypeToSave);
+
+    	// Gets the type just inserted and returns it
+    	sTypeToSave = SentenceType.getSentenceById(sTypeToSave.getIdSentenceType());
+    	
+    	return sTypeToSave;
+
+		
+	}
+	
+	
 	@Override
 	public Sentence setSentenceType(long id, String typeName) {
 		
@@ -172,6 +192,8 @@ public class SentencesImpl implements Sentences {
 		
 		return Sentence.getSentenceById(id);
 	}
+
+	
 
 
 
