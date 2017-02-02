@@ -13,6 +13,7 @@ import javax.jws.soap.SOAPBinding.Use;
 import myhealthylife.sentencegenerator.model.Sentence;
 import myhealthylife.sentencegenerator.model.SentenceList;
 import myhealthylife.sentencegenerator.model.SentenceType;
+import myhealthylife.sentencegenerator.model.SentenceTypeList;
 
 @WebService
 @SOAPBinding(style = Style.DOCUMENT, use=Use.LITERAL) //optional
@@ -47,6 +48,10 @@ public interface Sentences {
     @WebMethod(operationName="readRandomSentenceByType")
     @WebResult(name="sentence") 
     public Sentence readRandomSentenceByType(@WebParam(name="sentenceType") long sentenceType);
+    
+    @WebMethod(operationName="readSentenceTypeList")
+    @WebResult(name="sentenceTypes") 
+    public SentenceTypeList readSentenceTypeList();
     
     @WebMethod(operationName="createSentenceType")
     @WebResult(name="sentenceType") 

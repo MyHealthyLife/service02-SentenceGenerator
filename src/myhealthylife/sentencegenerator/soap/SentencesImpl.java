@@ -12,6 +12,7 @@ import javax.jws.WebService;
 import myhealthylife.sentencegenerator.model.Sentence;
 import myhealthylife.sentencegenerator.model.SentenceList;
 import myhealthylife.sentencegenerator.model.SentenceType;
+import myhealthylife.sentencegenerator.model.SentenceTypeList;
 
 //Service Implementation
 
@@ -158,6 +159,19 @@ public class SentencesImpl implements Sentences {
 		
 	}
 
+	
+	
+	@Override
+	public SentenceTypeList readSentenceTypeList() {
+		
+		// Gets all the types and adds them to the list
+		SentenceTypeList sentenceTypes = new SentenceTypeList();
+    	sentenceTypes.setSentenceType(SentenceType.getAll());
+    	
+        return sentenceTypes;
+	}
+	
+	
 	
 	@Override
 	public SentenceType createSentenceType(String typeName) {
