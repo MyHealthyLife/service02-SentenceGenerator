@@ -124,8 +124,9 @@ public class SentencesImpl implements Sentences {
 			Sentence currentSentence = sentenceList.get(i);
 			SentenceType currentType = currentSentence.getSentenceType();
 			
-			if(currentType!=null && currentType.getDescription().equals(sentenceType)) {
+			if(currentType!=null && currentType.getName().equals(sentenceType)) {
 				
+				// Adds it to the filtered list
 				sentenceListFiltered.add(currentSentence);
 				
 			}
@@ -133,9 +134,10 @@ public class SentencesImpl implements Sentences {
 			
 		}
 		
-		
+		// Checks if the filtered list is empty
 		if(!sentenceListFiltered.isEmpty()) {
 			
+			// Gets a random sentence by calculating a random index
 			Sentence selectedSentence = sentenceListFiltered.get((int)this.getRandomLong(sentenceListFiltered.size()-1));
 				
 			return selectedSentence;
@@ -178,7 +180,7 @@ public class SentencesImpl implements Sentences {
 		
 		// Creates a new type
 		SentenceType sTypeToSave = new SentenceType();
-		sTypeToSave.setDescription(typeName);
+		sTypeToSave.setName(typeName);
 
 		// Saves the new type
     	SentenceType.saveSentenceType(sTypeToSave);

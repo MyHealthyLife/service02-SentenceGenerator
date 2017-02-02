@@ -27,15 +27,15 @@ import myhealthylife.sentencegenerator.dao.SentenceGeneratorDao;
 @Table(name="SentenceType")
 @NamedQuery(name="SentenceType.findAll", query="SELECT s FROM SentenceType s")
 @XmlRootElement(name="sentenceType")
-@XmlType(propOrder={"idSentenceType", "description"})
+@XmlType(propOrder={"idSentenceType", "name"})
 public class SentenceType implements Serializable {
 
 	@Id
 	@GeneratedValue
 	private long idSentenceType;
 	
-	@Column(name="description")
-	private String description;
+	@Column(name="name")
+	private String name;
 
 	public long getIdSentenceType() {
 		return idSentenceType;
@@ -45,12 +45,12 @@ public class SentenceType implements Serializable {
 		this.idSentenceType = idSentenceType;
 	}
 
-	public String getDescription() {
-		return description;
+	public String getName() {
+		return name;
 	}
 
-	public void setDescription(String description) {
-		this.description = description;
+	public void setName(String name) {
+		this.name = name;
 	}
 	
 	
