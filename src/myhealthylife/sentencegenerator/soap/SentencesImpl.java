@@ -86,6 +86,9 @@ public class SentencesImpl implements Sentences {
     	if(sentenceToUpdate.getText()!=null) {
     		currentSentence.setText(sentenceToUpdate.getText());
     	}
+    	if(sentenceToUpdate.getUrl()!=null) {
+    		currentSentence.setUrl(sentenceToUpdate.getUrl());
+    	}
     	
     	// Update query
         Sentence.updateSentence(currentSentence);
