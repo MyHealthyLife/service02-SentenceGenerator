@@ -20,18 +20,28 @@ import myhealthylife.sentencegenerator.model.SentenceTypeList;
     serviceName="SentenceService")
 public class SentencesImpl implements Sentences {
 
+	
+	/**
+	 * Gets the entire list of sentences present in the database
+	 */
 	@Override
 	public SentenceList readSentenceList() {
 		
+		// Gets all the sentences from the database and returns it to the client
 		SentenceList sentences = new SentenceList();
     	sentences.setSentence(Sentence.getAll());
     	
         return sentences;
 	}
 
+	
+	/**
+	 * Gets a specific sentence based on its identifier
+	 */
 	@Override
 	public Sentence readSentence(long id) {
 		
+		// Gets the specific sentence the client requested
         Sentence p = Sentence.getSentenceById(id);
         if (p!=null) {
             System.out.println("---> Found Sentence by id = "+id+" => "+p.getText());
@@ -42,6 +52,10 @@ public class SentencesImpl implements Sentences {
 		
 	}
 
+	
+	/**
+	 * Creates a new sentence object and saves it into the database
+	 */
 	@Override
 	public Sentence createSentence(Sentence sentenceToSave) {
     	
@@ -55,6 +69,9 @@ public class SentencesImpl implements Sentences {
 
 	}
 
+	/**
+	 * Deletes a sentence already present in the database
+	 */
 	@Override
 	public long deleteSentence(long id) {
 		
@@ -74,6 +91,9 @@ public class SentencesImpl implements Sentences {
 		
 	}
 
+	/**
+	 * Updates an existing sentence in the database
+	 */
 	@Override
 	public Sentence updateSentence(Sentence sentenceToUpdate) {
 		
@@ -96,6 +116,10 @@ public class SentencesImpl implements Sentences {
 		
 	}
 
+	
+	/**
+	 * Gets a random sentence from the whole set
+	 */
 	@Override
 	public Sentence readRandomSentence() {
 		
@@ -116,6 +140,9 @@ public class SentencesImpl implements Sentences {
 	}
 	
 	
+	/**
+	 * Gets a random sentence from the set of sentences having a particular type
+	 */
 	@Override
 	public Sentence readRandomSentenceByType(String sentenceType) {
 		
@@ -155,6 +182,11 @@ public class SentencesImpl implements Sentences {
 	
 	
 
+	/**
+	 * Gets a random long number within a given range
+	 * @param upperRange The upper bound of the long random number
+	 * @return The long random number
+	 */
 	private long getRandomLong(long upperRange) {
 		
 		// Initializes a new generator
@@ -169,7 +201,9 @@ public class SentencesImpl implements Sentences {
 	}
 
 	
-	
+	/**
+	 * Gets the entire set of types for the sentences
+	 */
 	@Override
 	public SentenceTypeList readSentenceTypeList() {
 		
@@ -181,7 +215,9 @@ public class SentencesImpl implements Sentences {
 	}
 	
 	
-	
+	/**
+	 * Creates a new type for sentences
+	 */
 	@Override
 	public SentenceType createSentenceType(String typeName) {
 		
@@ -201,6 +237,9 @@ public class SentencesImpl implements Sentences {
 	}
 	
 	
+	/**
+	 * Sets an existing type to an existing sentence
+	 */
 	@Override
 	public Sentence setSentenceType(long sentenceId, long typeId) {
 		
@@ -224,7 +263,9 @@ public class SentencesImpl implements Sentences {
 	
 	
 	
-	
+	/**
+	 * Deletes a type already present in the database
+	 */
 	@Override
 	public long deleteSentenceType(long id) {
 		
