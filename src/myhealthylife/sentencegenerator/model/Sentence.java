@@ -22,7 +22,7 @@ import java.util.List;
 @Table(name="Sentence")
 @NamedQuery(name="Sentence.findAll", query="SELECT s FROM Sentence s")
 @XmlRootElement(name="sentence")
-@XmlType(propOrder={"idSentence", "text", "sentenceType"})
+@XmlType(propOrder={"idSentence", "text", "url", "sentenceType"})
 public class Sentence implements Serializable {
 	private static final long serialVersionUID = 1L;
 
@@ -32,6 +32,9 @@ public class Sentence implements Serializable {
 	
 	@Column(name="text")
 	private String text;
+	
+	@Column(name="url")
+	private String url;
 	
 	@ManyToOne(cascade=CascadeType.ALL,fetch=FetchType.EAGER)
 	@JoinColumn(name="idSentenceType",referencedColumnName="idSentenceType",insertable=true,updatable=true)
@@ -60,6 +63,28 @@ public class Sentence implements Serializable {
 	public void setText(String text) {
 		this.text = text;
 	}
+	
+
+
+	public String getUrl() {
+		return url;
+	}
+
+
+	public void setUrl(String url) {
+		this.url = url;
+	}
+	
+	public SentenceType getSentenceType() {
+		return sentenceType;
+	}
+
+
+	public void setSentenceType(SentenceType sentenceType) {
+		this.sentenceType = sentenceType;
+	}
+
+
 	
 	
 	/* DATABASE OPERATIONS */
@@ -111,18 +136,6 @@ public class Sentence implements Serializable {
 	    SentenceGeneratorDao.instance.closeConnections(em);
 	}
 
-
-	public SentenceType getSentenceType() {
-		return sentenceType;
-	}
-
-
-	public void setSentenceType(SentenceType sentenceType) {
-		this.sentenceType = sentenceType;
-	}
-
-
-	
 
 
 }
