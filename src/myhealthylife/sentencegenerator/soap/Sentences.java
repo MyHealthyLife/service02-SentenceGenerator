@@ -25,7 +25,7 @@ public interface Sentences {
 	 * @return The SentenceList object, containing all the sentences in the database
 	 */
 	@WebMethod(operationName="readSentenceList")
-    @WebResult(name="sentences") 
+    @WebResult(name="sentenceList") 
     public SentenceList readSentenceList();
 	
 	/**
@@ -86,7 +86,7 @@ public interface Sentences {
      * @return A list containing the types available in the database
      */
     @WebMethod(operationName="readSentenceTypeList")
-    @WebResult(name="sentenceTypes") 
+    @WebResult(name="sentenceTypeList") 
     public SentenceTypeList readSentenceTypeList();
     
     /**
