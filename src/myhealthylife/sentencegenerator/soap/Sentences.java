@@ -82,6 +82,16 @@ public interface Sentences {
     public Sentence readRandomSentenceByType(@WebParam(name="sentenceType") String sentenceType);
     
     /**
+     * Gets a random sentence from the set of sentences having a particular type and motive
+     * @param sentenceType The type of the sentence the user wants
+     * @param motive The motive of the sentence the user wants
+     * @return A sentence object randomly chosen for the given type
+     */
+    @WebMethod(operationName="readRandomSentenceByTypeAndTrend")
+    @WebResult(name="sentence") 
+    public Sentence readRandomSentenceByTypeAndTrend(@WebParam(name="sentenceType") String sentenceType, @WebParam(name="motive") Boolean motive);
+    
+    /**
      * Gets the entire set of types for the sentences
      * @return A list containing the types available in the database
      */
@@ -96,7 +106,7 @@ public interface Sentences {
      */
     @WebMethod(operationName="createSentenceType")
     @WebResult(name="sentenceType") 
-    public SentenceType createSentenceType(@WebParam(name="typeName") String typeName);
+    public SentenceType createSentenceType(@WebParam(name="typeName") String typeName, @WebParam(name="motive") Boolean motive);
     
     /**
      * Sets an existing type to an existing sentence

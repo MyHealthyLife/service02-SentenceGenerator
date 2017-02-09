@@ -27,7 +27,7 @@ import myhealthylife.sentencegenerator.dao.SentenceGeneratorDao;
 @Table(name="SentenceType")
 @NamedQuery(name="SentenceType.findAll", query="SELECT s FROM SentenceType s")
 @XmlRootElement(name="sentenceType")
-@XmlType(propOrder={"idSentenceType", "name"})
+@XmlType(propOrder={"idSentenceType", "name", "motive"})
 public class SentenceType implements Serializable {
 
 	@Id
@@ -37,6 +37,9 @@ public class SentenceType implements Serializable {
 	@Column(name="name")
 	private String name;
 
+	@Column(name="motive")
+	private Boolean motive;
+	
 	public long getIdSentenceType() {
 		return idSentenceType;
 	}
@@ -55,6 +58,14 @@ public class SentenceType implements Serializable {
 	
 	
 	
+	public Boolean getMotive() {
+		return motive;
+	}
+
+	public void setMotive(Boolean motive) {
+		this.motive = motive;
+	}
+
 	/* DATABASE OPERATIONS */
 	public static SentenceType getSentenceTypeById(long sentenceId) {
 		EntityManager em = SentenceGeneratorDao.instance.createEntityManager();

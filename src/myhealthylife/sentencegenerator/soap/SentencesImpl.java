@@ -181,6 +181,47 @@ public class SentencesImpl implements Sentences {
 	}
 	
 	
+	/**
+	 * Gets a random sentence from the set of sentences having a particular type and motive
+	 */
+	@Override
+	public Sentence readRandomSentenceByTypeAndTrend(String sentenceType, Boolean motive) {
+		
+		// Lists used to filter results
+		List<Sentence> sentenceList = this.readSentenceList().getSentence();
+		List<Sentence> sentenceListFiltered = new ArrayList<>();
+		
+		for(int i=0;i<sentenceList.size();i++) {
+			
+			// Gets the current sentence and its type
+			Sentence currentSentence = sentenceList.get(i);
+			SentenceType currentType = currentSentence.getSentenceType();
+			
+			if(currentType!=null && currentType.getName().equals(sentenceType) && currentType.getMotive().equals(motive)) {
+				
+				// Adds it to the filtered list
+				sentenceListFiltered.add(currentSentence);
+				
+			}
+			
+			
+		}
+		
+		// Checks if the filtered list is empty
+		if(!sentenceListFiltered.isEmpty()) {
+			
+			// Gets a random sentence by calculating a random index
+			Sentence selectedSentence = sentenceListFiltered.get((int)this.getRandomLong(sentenceListFiltered.size()-1));
+				
+			return selectedSentence;
+			
+		}
+		
+		return null;
+		
+	}
+	
+	
 
 	/**
 	 * Gets a random long number within a given range
@@ -219,11 +260,12 @@ public class SentencesImpl implements Sentences {
 	 * Creates a new type for sentences
 	 */
 	@Override
-	public SentenceType createSentenceType(String typeName) {
+	public SentenceType createSentenceType(String typeName, Boolean motive) {
 		
 		// Creates a new type
 		SentenceType sTypeToSave = new SentenceType();
 		sTypeToSave.setName(typeName);
+		sTypeToSave.setMotive(motive);
 
 		// Saves the new type
     	SentenceType.saveSentenceType(sTypeToSave);
