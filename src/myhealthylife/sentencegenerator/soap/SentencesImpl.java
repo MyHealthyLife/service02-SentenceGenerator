@@ -59,11 +59,38 @@ public class SentencesImpl implements Sentences {
 	@Override
 	public Sentence createSentence(Sentence sentenceToSave) {
     	
-    	// Saves the new sentence
-    	Sentence.saveSentence(sentenceToSave);
+    	if(sentenceToSave.getSentenceType()!=null) {
+    		
+    		SentenceType typeToSave = sentenceToSave.getSentenceType();
+    		
+    		long checkType = this.searchForSentenceType(typeToSave.getName(), typeToSave.getMotive());
+    		
+    		// Creates a new sentence with a brand new type
+    		if(checkType==0) {
+    			
+    	    	// Saves the new sentence
+    	    	Sentence.saveSentence(sentenceToSave);
 
-    	// Gets the sentence just inserted
-    	sentenceToSave = Sentence.getSentenceById(sentenceToSave.getIdSentence());
+    	    	// Gets the sentence just inserted
+    	    	sentenceToSave = Sentence.getSentenceById(sentenceToSave.getIdSentence());
+    	    	
+    			
+    		}
+    		else {
+    			
+    			sentenceToSave.setSentenceType(null);
+    			
+    			// Saves the new sentence
+    	    	Sentence.saveSentence(sentenceToSave);
+    	    	
+    	    	this.setSentenceType(sentenceToSave.getIdSentence(), checkType);
+
+    	    	// Gets the sentence just inserted
+    	    	sentenceToSave = Sentence.getSentenceById(sentenceToSave.getIdSentence());
+    	    	
+    		}
+    		
+    	}
     	
     	return sentenceToSave;
 
@@ -328,7 +355,27 @@ public class SentencesImpl implements Sentences {
 	}
 
 	
+	private long searchForSentenceType(String sentenceTypeToSearch, Boolean motiveToSearch) {
+    	
+		// Gets all the sentence types
+		List<SentenceType> sTypeList = SentenceType.getAll();
+		
+		for(int i=0;i<sTypeList.size();i++) {
+			
+			SentenceType singleType = sTypeList.get(i);
+			
+			if(singleType.getName().equals(sentenceTypeToSearch) && singleType.getMotive().equals(motiveToSearch)) {
+				
+				return singleType.getIdSentenceType();
+				
+			}
+			
+		}
+		
+    	
+    	return 0;
 
+	}
 
 
 
