@@ -364,7 +364,7 @@ public class SentencesImpl implements Sentences {
 			
 			SentenceType singleType = sTypeList.get(i);
 			
-			if(singleType.getName().equals(sentenceTypeToSearch) && singleType.getMotive().equals(motiveToSearch)) {
+			if(singleType.getName()!=null && singleType.getMotive()!=null && singleType.getName().equals(sentenceTypeToSearch) && singleType.getMotive().equals(motiveToSearch)) {
 				
 				return singleType.getIdSentenceType();
 				
