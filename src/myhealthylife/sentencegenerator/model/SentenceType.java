@@ -30,9 +30,11 @@ import myhealthylife.sentencegenerator.dao.SentenceGeneratorDao;
 @XmlType(propOrder={"idSentenceType", "name", "motive"})
 public class SentenceType implements Serializable {
 
+	private static final long serialVersionUID = 1L;
+
 	@Id
 	@GeneratedValue
-	private long idSentenceType;
+	private Long idSentenceType;
 	
 	@Column(name="name")
 	private String name;
@@ -40,11 +42,11 @@ public class SentenceType implements Serializable {
 	@Column(name="motive")
 	private Boolean motive;
 	
-	public long getIdSentenceType() {
+	public Long getIdSentenceType() {
 		return idSentenceType;
 	}
 
-	public void setIdSentenceType(long idSentenceType) {
+	public void setIdSentenceType(Long idSentenceType) {
 		this.idSentenceType = idSentenceType;
 	}
 

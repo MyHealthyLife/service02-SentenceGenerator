@@ -24,11 +24,12 @@ import java.util.List;
 @XmlRootElement(name="sentence")
 @XmlType(propOrder={"idSentence", "text", "url", "sentenceType"})
 public class Sentence implements Serializable {
+	
 	private static final long serialVersionUID = 1L;
 
 	@Id
 	@GeneratedValue
-	private long idSentence;
+	private Long idSentence;
 	
 	@Column(name="text")
 	private String text;
@@ -45,12 +46,12 @@ public class Sentence implements Serializable {
 	
 
 	/* GETTERS AND SETTERS */
-	public long getIdSentence() {
+	public Long getIdSentence() {
 		return idSentence;
 	}
 
 
-	public void setIdSentence(long idSentence) {
+	public void setIdSentence(Long idSentence) {
 		this.idSentence = idSentence;
 	}
 
