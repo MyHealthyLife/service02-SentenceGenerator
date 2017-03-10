@@ -62,6 +62,7 @@ public class SentencesImpl implements Sentences {
     	if(sentenceToSave.getSentenceType()!=null) {
     		
     		SentenceType typeToSave = sentenceToSave.getSentenceType();
+    		typeToSave.setName(typeToSave.getName().toLowerCase());
     		
     		long checkType = this.searchForSentenceType(typeToSave.getName(), typeToSave.getMotive());
     		
