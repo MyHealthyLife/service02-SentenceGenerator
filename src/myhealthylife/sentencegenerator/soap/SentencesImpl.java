@@ -33,6 +33,32 @@ public class SentencesImpl implements Sentences {
     	
         return sentences;
 	}
+	
+	/**
+	 * Gets a filtered list of sentences present in the database (the ones with public type)
+	 */
+	public SentenceList readSentenceListPublic() {
+		
+		// Gets all the sentences from the database and returns it to the client
+		SentenceList sentences = new SentenceList();
+    	sentences.setSentence(Sentence.getAll());
+    	
+    	List<Sentence> sentenceList = sentences.getSentence();
+    	
+    	// Builds a filtered list with only public types
+    	for(int i=0;i<sentenceList.size();i++) {
+    		
+    		SentenceType singleType = sentenceList.get(i).getSentenceType();
+    		
+    		if(singleType.isPrivateType()) {
+    			sentenceList.remove(sentenceList.get(i));
+    		}
+    		
+    	}
+    	sentences.setSentence(sentenceList);
+    	
+        return sentences;
+	}
 
 	
 	/**
@@ -64,7 +90,7 @@ public class SentencesImpl implements Sentences {
     		SentenceType typeToSave = sentenceToSave.getSentenceType();
     		typeToSave.setName(typeToSave.getName().toLowerCase());
     		
-    		long checkType = this.searchForSentenceType(typeToSave.getName(), typeToSave.getMotive());
+    		long checkType = this.searchForSentenceType(typeToSave.getName(), typeToSave.getMotive(), typeToSave.isPrivateType());
     		
     		// Creates a new sentence with a brand new type
     		if(checkType==0) {
@@ -76,6 +102,9 @@ public class SentencesImpl implements Sentences {
     	    	sentenceToSave = Sentence.getSentenceById(sentenceToSave.getIdSentence());
     	    	
     			
+    		}
+    		else if(checkType==-1) {
+    			return null;
     		}
     		else {
     			
@@ -152,7 +181,7 @@ public class SentencesImpl implements Sentences {
 	public Sentence readRandomSentence() {
 		
 		// Gets all the sentences present in the database
-		List<Sentence> sentenceList = this.readSentenceList().getSentence();
+		List<Sentence> sentenceList = this.readSentenceListPublic().getSentence();
 		
 		if(!sentenceList.isEmpty()) {
 			
@@ -356,8 +385,13 @@ public class SentencesImpl implements Sentences {
 	}
 
 	
-	private long searchForSentenceType(String sentenceTypeToSearch, Boolean motiveToSearch) {
+	private long searchForSentenceType(String sentenceTypeToSearch, Boolean motiveToSearch, boolean privateType) {
     	
+		// Type not allowed
+		if(privateType) {
+			return -1;
+		}
+		
 		// Gets all the sentence types
 		List<SentenceType> sTypeList = SentenceType.getAll();
 		

@@ -27,7 +27,7 @@ import myhealthylife.sentencegenerator.dao.SentenceGeneratorDao;
 @Table(name="SentenceType")
 @NamedQuery(name="SentenceType.findAll", query="SELECT s FROM SentenceType s")
 @XmlRootElement(name="sentenceType")
-@XmlType(propOrder={"idSentenceType", "name", "motive"})
+@XmlType(propOrder={"idSentenceType", "name", "motive", "privateType"})
 public class SentenceType implements Serializable {
 
 	private static final long serialVersionUID = 1L;
@@ -41,6 +41,9 @@ public class SentenceType implements Serializable {
 
 	@Column(name="motive")
 	private Boolean motive;
+
+	@Column(name="privateType")
+	private boolean privateType;
 	
 	public Long getIdSentenceType() {
 		return idSentenceType;
@@ -66,6 +69,21 @@ public class SentenceType implements Serializable {
 
 	public void setMotive(Boolean motive) {
 		this.motive = motive;
+	}
+
+
+	/**
+	 * @return the privateType
+	 */
+	public boolean isPrivateType() {
+		return privateType;
+	}
+
+	/**
+	 * @param privateType the privateType to set
+	 */
+	public void setPrivateType(boolean privateType) {
+		this.privateType = privateType;
 	}
 
 	/* DATABASE OPERATIONS */
