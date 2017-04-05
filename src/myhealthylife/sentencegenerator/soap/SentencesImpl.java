@@ -44,18 +44,20 @@ public class SentencesImpl implements Sentences {
     	sentences.setSentence(Sentence.getAll());
     	
     	List<Sentence> sentenceList = sentences.getSentence();
-    	
+    	List<Sentence> sentenceListFiltered = new ArrayList<>();
+
     	// Builds a filtered list with only public types
     	for(int i=0;i<sentenceList.size();i++) {
     		
     		SentenceType singleType = sentenceList.get(i).getSentenceType();
     		
-    		if(singleType.isPrivateType()) {
-    			sentenceList.remove(sentenceList.get(i));
+    		if(!singleType.isPrivateType()) {
+    			sentenceListFiltered.add(sentenceList.get(i));
     		}
     		
     	}
-    	sentences.setSentence(sentenceList);
+    	
+    	sentences.setSentence(sentenceListFiltered);
     	
         return sentences;
 	}
@@ -186,7 +188,7 @@ public class SentencesImpl implements Sentences {
 		if(!sentenceList.isEmpty()) {
 			
 			// Gets a random sentence by calculating a random index
-			Sentence selectedSentence = sentenceList.get((int)this.getRandomLong(sentenceList.size()-1));
+			Sentence selectedSentence = sentenceList.get((int)this.getRandomLong(sentenceList.size()));
 			
 			return selectedSentence;
 			
@@ -227,7 +229,7 @@ public class SentencesImpl implements Sentences {
 		if(!sentenceListFiltered.isEmpty()) {
 			
 			// Gets a random sentence by calculating a random index
-			Sentence selectedSentence = sentenceListFiltered.get((int)this.getRandomLong(sentenceListFiltered.size()-1));
+			Sentence selectedSentence = sentenceListFiltered.get((int)this.getRandomLong(sentenceListFiltered.size()));
 				
 			return selectedSentence;
 			
@@ -268,7 +270,7 @@ public class SentencesImpl implements Sentences {
 		if(!sentenceListFiltered.isEmpty()) {
 			
 			// Gets a random sentence by calculating a random index
-			Sentence selectedSentence = sentenceListFiltered.get((int)this.getRandomLong(sentenceListFiltered.size()-1));
+			Sentence selectedSentence = sentenceListFiltered.get((int)this.getRandomLong(sentenceListFiltered.size()));
 				
 			return selectedSentence;
 			
